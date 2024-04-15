@@ -4,8 +4,9 @@
 
 #define VLong unsigned int
 #define MAX_ARRAY_SIZE 10000
+#define FIRST_PRIME 2
 
-void print_factor(VLong factor, VLong* number, VLong* factors, int* factors_count) {
+void store_factor(VLong factor, VLong* number, VLong* factors, int* factors_count) {
     while (*number % factor == 0) {
         factors[*factors_count] = factor;
         *factors_count += 1;
@@ -14,22 +15,28 @@ void print_factor(VLong factor, VLong* number, VLong* factors, int* factors_coun
     }
 }
 
-void print_factors_of_two(VLong* number, VLong* factors, int* factors_count) {
-    print_factor(2, number, factors, factors_count);
+void factorize_by_two(VLong* number, VLong* factors, int* factors_count) {
+    store_factor(FIRST_PRIME, number, factors, factors_count);
 }
 
-void print_factors_of_odd_numbers(VLong* number, VLong* factors, int* factors_count) {
-    for (VLong i = 3; i <= sqrt(*number); i = i + 2) {
-        print_factor(i, number, factors, factors_count);
+
+void factorize_by_odd_numbers(VLong* number, VLong* factors, int* factors_count) {
+    for (VLong i = FIRST_PRIME + 1; i <= sqrt(*number); i = i + 2) {
+        store_factor(i, number, factors, factors_count);
     }
 }
 
 void factorize(VLong number, VLong* factors) {
-    int factors_count = 0;
-    print_factors_of_two(&number, factors, &factors_count);
-    print_factors_of_odd_numbers(&number, factors, &factors_count);
+    if (factors == NULL) {
+        printf("Error: factors pointer is NULL\n");
+        return;
+    }
 
-    if (number > 2) {
+    int factors_count = 0;
+    factorize_by_two(&number, factors, &factors_count);
+    factorize_by_odd_numbers(&number, factors, &factors_count);
+
+    if (number > FIRST_PRIME) {
         factors[factors_count] = number;
     }
 }
