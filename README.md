@@ -31,7 +31,7 @@ source ./emsdk_env.sh
 ### Compile C code to WASM
 
 ```
-# Enter lib directory
+# Enter prime-factorization-c directory
 cd lib/prime-factorization-c
 
 # Run makefile
@@ -40,7 +40,13 @@ make
 
 ### Usage
 
-Open `index.html` file in browser, then enter a number, click "Factorizar" and watch the prime factors of the number.
+Now, you have to start an HTTP server at the root folder:
+```
+python3 -m http.server
+```
+
+Then go to `localhost:8000/src/` in your browser, enter a number, click on "Factorizar" and watch the prime numbers of the number given.
+
 
 ## Supported Features
 
