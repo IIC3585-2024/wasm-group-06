@@ -11,30 +11,45 @@
     </head>
     <body>
         <div class="p-8">
-            <div class="flex flex-col items-center justify-center gap-4 mb-8 max-w-md">
-                <label class="form-control w-full">
-                    <div class="label">
-                        <span class="label-text-alt">Ingresa el número</span>
-                    </div>
-                    <input type="number" class="input input-bordered w-full" id="input"/>
-                    <div class="label">
-                        <span class="label-text-alt text-warning" class="error"></span>
-                    </div>
-                </label>
-                <button class="btn btn-primary w-full" onclick="handleSubmit()">Factorizar</button>
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-center">Prime Factorization</h1>
+                <h2 class="text-2xl font-bold text-center">WASM vs Native-JS</h2>
             </div>
 
-            <div class="flex flex-col w-full gap-8 lg:flex-row">
-                <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center" id="wasm-box">
-                    <h1>WASM</h1>
-                    <p id="wasm-content"></p>
-                </div> 
-                <div class="divider lg:divider-horizontal"></div> 
-                <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
-                    <h1>Native JS</h1>
-                    <p id="js-content"></p>
+            <div class="mb-8 flex flex-col items-center gap-2">
+                <span id="error" class="text-red-500"></span>
+                <div class="w-full flex flex-row items-center justify-center gap-4">
+                    <input type="number"class="input input-bordered input-md w-full max-w-xs" id="input" placeholder="Ingresa un número" min="1" required>
+                    <button class="btn btn-primary button-lg" onclick="handleSubmit()">Factorizar</button>
                 </div>
-            </div>          
+            </div>
+
+            <div class="md:justify-center flex flex-col md:flex-row w-full min-h-64 gap-8 mb-4 md:mb-8">
+                <div class="flex flex-col gap-6 flex-grow min-h-full card bg-base-300 rounded-box place-items-center max-w-xl py-8 px-4">
+                    <h1 class="text-3xl font-bold underline">WASM</h1>
+                    <div
+                        class="grid grid-cols-5 gap-2"
+                        id="wasm-content">
+                    </div>
+                    <div id="wasm-time"></div>
+                </div> 
+                <div class="divider md:divider-horizontal"></div> 
+                <div class="flex flex-col gap-6 flex-grow min-h-full card bg-base-300 rounded-box place-items-center max-w-xl py-8  px-4">
+                    <h1 class="text-3xl font-bold underline">Native-JS</h1>
+                    <div
+                        class="grid grid-cols-5 gap-2"
+                        id="js-content">
+                    </div>
+                    <div id="js-time"></div>
+                </div>
+            </div>
+
+            <div class="mockup-code fixed bottom-2 right-2 md:right-8 md:bottom-8">
+                <pre data-prefix="$"><code>Grupo 6</code></pre> 
+                <pre data-prefix=">" class="text-success"><code>Valentina Campaña</code></pre> 
+                <pre data-prefix=">" class="text-success"><code>Cristobal Carrasco</code></pre>
+                <pre data-prefix=">" class="text-success"><code>Carlos Paredes</code></pre>
+            </div>
     </div>
     </body>
 </html>
