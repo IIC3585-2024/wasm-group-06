@@ -27,12 +27,8 @@ void factorize_by_odd_numbers(VLong* number, VLong* factors, int* factors_count)
 }
 
 void factorize(VLong number, VLong* factors) {
-    if (factors == NULL) {
-        printf("Error: factors pointer is NULL\n");
-        return;
-    }
-
     int factors_count = 0;
+    
     factorize_by_two(&number, factors, &factors_count);
     factorize_by_odd_numbers(&number, factors, &factors_count);
 
