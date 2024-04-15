@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Visualizer - Grupo 6</title>
+        <script src="../lib/prime-factorization-js/prime_factorization.js"></script>
+        <script src="../lib/prime-factorization-c/factorize.js"></script>
+        <script src="./index.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="p-8">
+            <div class="flex flex-col items-center justify-center gap-4 mb-8 max-w-md">
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text-alt">Ingresa el número</span>
+                    </div>
+                    <input type="number" class="input input-bordered w-full" id="input"/>
+                    <div class="label">
+                        <span class="label-text-alt text-warning" class="error"></span>
+                    </div>
+                </label>
+                <button class="btn btn-primary w-full" onclick="handleSubmit()">Factorizar</button>
+            </div>
+
+            <div class="flex flex-col w-full gap-8 lg:flex-row">
+                <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center" id="wasm-box">
+                    <h1>WASM</h1>
+                    <p id="wasm-content"></p>
+                </div> 
+                <div class="divider lg:divider-horizontal"></div> 
+                <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
+                    <h1>Native JS</h1>
+                    <p id="js-content"></p>
+                </div>
+            </div>          
+    </div>
+    </body>
+</html>
